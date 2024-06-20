@@ -6,17 +6,14 @@ import java.sql.SQLException;
 
 public class JDBCUtil {
 
-    private static final String URL = "jdbc:mysql://localhost:3309/school?useSSL=false&characterEncoding=utf-8&allowPublicKeyRetrieval=true";
+    private static final String URL = "jdbc:mysql://localhost:3306/school?useSSL=false&characterEncoding=utf-8&allowPublicKeyRetrieval=true";
     private static final String USER = "root";
     private static final String PASSWORD = "123456";
     private static Connection connection = null;
 
     public static Connection getConnection() {
         try {
-            // MySQL 5
-//            Class.forName("com.mysql.jdbc.Driver");
-            // MySQL 8
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
             return connection;
         } catch (Exception e) {
